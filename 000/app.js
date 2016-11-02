@@ -1,3 +1,10 @@
-$.ready(function() {
-  
+$(document).ready(function() {
+  var src = document.getElementById('todolist_t').innerHTML;
+  var template = Handlebars.compile(src);
+  var output = template({
+    name: "Frances Serious"
+  });
+
+  var placeholder = document.getElementById('todolist');
+  placeholder.innerHTML = output;
 });
