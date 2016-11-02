@@ -1,11 +1,18 @@
 <!doctype html>
 <html>
   <head>
-    <title>Handlebars sample</title>
+    <title>Handlebars To Do</title>
     <script src="handlebars-v4.0.5.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.js"
       integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
       crossorigin="anonymous"></script>
     <script src="app.js"></script>
+    <script id="todolist_t" type="template/handlebars">
+      <h2>{{name}}</h2>
+    </script>
   </head>
   <body>
+    <h1>To Do</h1>
+    <div id="todolist"></div>
+  </body>
+</html>
