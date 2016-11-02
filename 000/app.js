@@ -2,17 +2,9 @@ var viewmodel = {
   name: "Frances Serious",
   todoItems: [{ title: "learn handlebars"}]
 };
-
-function bindAdd() {
-  var input = $('#newTask');
-
-  $(input).keyup(function(event) {
-    if(event.keyCode === 13) {
-      addTodo($(this).val());
-      display();
-      bindAdd();
-    } 
-  });
+  
+function addTodo(item) {
+  viewmodel.todoItems.push({title: item});
 }
 
 function display() {
@@ -23,12 +15,20 @@ function display() {
   var placeholder = document.getElementById('todolist');
   placeholder.innerHTML = output;
 }
-  
-function addTodo(item) {
-  viewmodel.todoItems.push({title: item});
+
+function bindAddEvent() {
+  var input = $('#newTask');
+
+  $(input).keyup(function(event) {
+    if(event.keyCode === 13) {
+      addTodo($(this).val());
+      display();
+      bindAddEvent();
+    } 
+  });
 }
 
 $(document).ready(function() {
   display();
-  bindAdd();
+  bindAddEvent();
 });
