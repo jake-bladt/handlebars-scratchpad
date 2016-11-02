@@ -1,3 +1,4 @@
+// This is the object handlebars will use to fill in the template
 var viewmodel = {
   name: "Frances Serious",
   todoItems: [{ title: "learn handlebars"}]
@@ -16,11 +17,14 @@ function display() {
   placeholder.innerHTML = output;
 }
 
+// because handlebars destroys and recreates dom elements in
+// templates, break out the key-up binding into its own function,
+// to be called on document ready and display.
 function bindAddEvent() {
   var input = $('#newTask');
 
   $(input).keyup(function(event) {
-    if(event.keyCode === 13) {
+    if(event.keyCode === 13) {  // Enter Key
       addTodo($(this).val());
       display();
       bindAddEvent();
