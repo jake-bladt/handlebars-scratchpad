@@ -9,6 +9,12 @@
     <script src="app.js"></script>
     <script id="todolist_t" type="template/handlebars">
       <h2>for {{name}}</h2>
+      <ul>
+        {{#each todoItems}}
+          <li>{{title}}</li>
+        {{/each}}
+        <li><input type="text" id="newTask"</li>
+      </ul>
     </script>
   </head>
   <body>
