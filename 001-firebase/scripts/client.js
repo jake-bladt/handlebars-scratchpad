@@ -8,6 +8,21 @@ var config = {
 firebase.initializeApp(config);
 var db = firebase.database();
 
+var months = [
+  undefined, 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+];
+
+var dateStamp = function(stamp) {
+  return {
+    toDateString: function() {
+      var year = stamp.substring(0, 4);
+      var month = stamp.substring(4, 6);
+      var day = stamp.substring(7, 8);
+      return `${months[month]} ${day}, ${year}`;
+    }
+  }
+};
+
 var viewModel = {
   stepCounts: []
 };
@@ -17,11 +32,16 @@ $(document).ready(function() {
   var stepCountsRef = db.ref('stepcounts/');
   stepCountsRef.
     on("value", function(snapshot) { 
-      viewModel.stepCounts = [];
       var dbVals = snapshot.val();
-      for (var sc in dbVals) {
-        console.log(sc + ": " + dbVals[sc]);
-      };
+      viewModel.stepCounts = Object.keys(dbVals).map(function(key, index) {
+        return {
+          id: Number(key),
+          date: dateStamp(key).toDateString(),
+          count: Number(dbVals[key])
+        }
+      });
+      console.log("new readings", viewModel.stepCounts);
+
     });
 
 });
