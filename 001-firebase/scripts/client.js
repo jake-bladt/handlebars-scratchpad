@@ -11,6 +11,6 @@ var db = firebase.database();
 $(document).ready(function() {
   var stepCountsRef = db.ref('/stepcounts');
   stepCountsRef.on("value", function(snapshot) {
-    console.log(snapshot);
+    console.log("SNAPSHOT: " + snapshot.val());
   });
 });
