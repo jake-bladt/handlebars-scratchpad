@@ -8,15 +8,19 @@ var config = {
 firebase.initializeApp(config);
 var db = firebase.database();
 
+var viewModel = {
+  stepCounts: []
+};
+
 $(document).ready(function() {
 
   var stepCountsRef = db.ref('stepcounts/');
   stepCountsRef.
     on("value", function(snapshot) { 
-      var stepCounts = snapshot.val();
-      console.log(stepCounts);
-      for (var sc in stepCounts) {
-        console.log(sc + ": " + stepCounts[sc]);
+      viewModel.stepCounts = [];
+      var dbVals = snapshot.val();
+      for (var sc in dbVals) {
+        console.log(sc + ": " + dbVals[sc]);
       };
     });
 
