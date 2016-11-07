@@ -10,9 +10,15 @@ var db = firebase.database();
 
 $(document).ready(function() {
 
-  var stepCountsRef = db.ref('/stepcounts/');
+  var stepCountsRef = db.ref('stepcounts/');
   stepCountsRef.
     once("value").
-    then(function(snapshot) { console.log(snapshot.child('20161106')); });
+    then(function(snapshot) { 
+      var stepCounts = snapshot.val();
+      console.log(stepCounts);
+      for (var sc in stepCounts) {
+        console.log(sc + ": " + stepCounts[sc]);
+      };
+    });
 
 });
