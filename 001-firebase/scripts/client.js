@@ -9,8 +9,10 @@ firebase.initializeApp(config);
 var db = firebase.database();
 
 $(document).ready(function() {
-  var stepCountsRef = db.ref('/stepcounts');
-  stepCountsRef.on("value", function(snapshot) {
-    console.log("SNAPSHOT: " + snapshot.val());
-  });
+
+  var stepCountsRef = db.ref('/stepcounts/');
+  stepCountsRef.
+    once("value").
+    then(function(snapshot) { console.log(snapshot.child('20161106')); });
+
 });
