@@ -12,8 +12,7 @@ $(document).ready(function() {
 
   var stepCountsRef = db.ref('stepcounts/');
   stepCountsRef.
-    once("value").
-    then(function(snapshot) { 
+    on("value", function(snapshot) { 
       var stepCounts = snapshot.val();
       console.log(stepCounts);
       for (var sc in stepCounts) {
