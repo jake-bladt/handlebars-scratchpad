@@ -6,13 +6,16 @@
     <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
     <script src="scripts/handlebars.js"></script>
     <script src="scripts/client.js"></script>
+    <script id="stepcounts_t" type="template/handlebars">
+      <ul>
+      {{#each stepCounts}}
+        <li data-id='{{id}}'>{{date}}: {{count}}</li>
+      {{/each}}
+      </ul>
+    </script> 
   </head>
   <body>
     <h1>Steps</h1>
-    <ul id="stepcounts_t">
-    {{#each stepCounts}}
-      <li data-id='{{id}}'>{{date}}: {{count}}</li>
-    {{/each}}
-    </ul>
+    <div id="stepcounts"></div>
   </body>
 </html>

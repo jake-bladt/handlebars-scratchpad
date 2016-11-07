@@ -8,11 +8,12 @@ var config = {
 firebase.initializeApp(config);
 var db = firebase.database();
 
-var months = [
-  undefined, 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-];
-
 var dateStamp = function(stamp) {
+
+  var months = [
+    undefined, 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+  ];
+
   return {
     toDateString: function() {
       var year = stamp.substring(0, 4);
@@ -42,6 +43,12 @@ $(document).ready(function() {
       });
       console.log("new readings", viewModel.stepCounts);
 
+      var src = document.getElementById('stepcounts_t').innerHTML;
+      var template = Handlebars.compile(src);
+      var output = template(viewModel);
+
+      var placeholder = document.getElementById('stepcounts');
+      placeholder.innerHTML = output;
     });
 
 });
