@@ -21,9 +21,7 @@ function display() {
 // templates, break out the key-up binding into its own function,
 // to be called on document ready and display.
 function bindAddEvent() {
-  var input = $('#newTask');
-
-  $(input).keyup(function(event) {
+  $('#newTask').keyup(function(event) {
     if(event.keyCode === 13) {  // Enter Key
       addTodo($(this).val());
       display();
