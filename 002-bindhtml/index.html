@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Handlebars with Firebase</title>
+    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <script src="scripts/handlebars.js"></script>
+    <script src="scripts/client.js"></script>
+    <script id="stepcounts_t" type="template/handlebars">
+      <ul>
+      {{#each stepCounts}}
+        <li data-id='{{id}}'>{{date}}: {{count}}</li>
+      {{/each}}
+      </ul>
+    </script> 
+  </head>
+  <body>
+    <h1>Steps</h1>
+    <div id="stepcounts"></div>
+  </body>
+</html>
